@@ -1,0 +1,4 @@
+---
+- hosts: docker-host
+  roles:
+    - blog

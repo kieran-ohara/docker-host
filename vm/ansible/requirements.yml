@@ -1,0 +1,4 @@
+collections:
+  - name: https://github.com/kieran-ohara/common-ansible-roles
+    version: main
+    type: git

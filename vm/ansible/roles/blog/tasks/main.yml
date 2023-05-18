@@ -1,0 +1,49 @@
+---
+- name: Grab Traefik Binary.
+  ansible.builtin.unarchive:
+    src: https://github.com/traefik/traefik/releases/download/v2.10.1/traefik_v2.10.1_linux_arm64.tar.gz
+    dest: /usr/local/bin
+    remote_src: true
+  become: true
+  tags:
+    - traefik
+- name: Create /etc/traefik directory
+  file:
+    path: /etc/traefik
+    state: directory
+    mode: '0755'
+  become: true
+  tags:
+    - traefik
+
+- name: Copy Traefik config
+  template:
+    src: traefik.yml
+    dest: /etc/traefik/traefik.yml
+  become: true
+  tags:
+    - traefik
+
+- name: Copy Traefik systemd unit file
+  template:
+    src: traefik.service
+    dest: /etc/systemd/system/traefik.service
+  become: true
+  tags:
+    - traefik
+
+- name: Reload systemd daemon
+  systemd:
+    daemon_reload: true
+  become: true
+  tags:
+    - traefik
+
+- name: Enable and start Traefik service
+  systemd:
+    name: traefik
+    state: started
+    enabled: true
+  become: true
+  tags:
+    - traefik

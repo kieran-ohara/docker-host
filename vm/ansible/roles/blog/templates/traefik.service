@@ -1,0 +1,12 @@
+[Unit]
+Description=Traefik HTTP Reverse Proxy
+After=docker.service
+BindsTo=docker.service
+
+User=root
+
+[Service]
+ExecStart=/usr/local/bin/traefik --configfile /etc/traefik/traefik.yml
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,3 @@
+vm/ansible/collections/ansible_collections/*
+vm/ansible/inventory
+vm/build.auto.pkrvars.hcl

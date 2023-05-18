@@ -1,0 +1,5 @@
+---
+dependencies:
+  - role: kieranohara.common_ansible_roles.docker
+  - role: kieranohara.common_ansible_roles.sysadmin
+  - role: kieranohara.common_ansible_roles.cleanup

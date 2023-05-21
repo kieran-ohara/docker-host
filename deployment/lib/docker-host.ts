@@ -22,7 +22,7 @@ export class DockerHostStack extends cdk.Stack {
       allowAllOutbound: true,
     });
 
-    [].map.call([80, 443, 22], (port) => {
+    [].map.call([80, 8080, 443, 22], (port) => {
       securityGroup.addIngressRule(
         ec2.Peer.anyIpv4(),
         new ec2.Port({

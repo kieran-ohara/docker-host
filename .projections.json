@@ -1,0 +1,5 @@
+{
+  "*": {
+    "dispatch": "aws-vault exec kieranohara -- make deployment"
+  }
+}

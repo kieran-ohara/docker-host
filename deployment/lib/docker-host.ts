@@ -22,23 +22,12 @@ export class DockerHostStack extends cdk.Stack {
       allowAllOutbound: true,
     });
 
-    [].map.call([80, 8080, 443, 22], (port) => {
-      securityGroup.addIngressRule(
-        ec2.Peer.anyIpv4(),
-        new ec2.Port({
-          fromPort: port,
-          toPort: port,
-          protocol: ec2.Protocol.TCP,
-          stringRepresentation: "allow HTTP access from anywhere",
-        })
-      );
-    });
-
-    const [machineName, instanceType, route53Zone, route53Record] = [
+    const [machineName, instanceType, route53Zone, route53Record, myIP] = [
       "machineName",
       "instanceType",
       "route53Zone",
       "route53Record",
+      "myIP"
     ].map((contextKey) => {
       const contextValue = this.node.tryGetContext(contextKey);
       if (contextValue === undefined) {
@@ -46,6 +35,34 @@ export class DockerHostStack extends cdk.Stack {
       }
       return contextValue;
     });
+
+    [].map.call([
+      {
+        port :80,
+        description: 'Allow HTTP',
+        from: ec2.Peer.anyIpv4(),
+      },
+      {
+        port :8080,
+        description: 'Allow dashbaord',
+        from: ec2.Peer.ipv4(myIP),
+      },
+      {
+        port :22,
+        description: 'Allow ssh',
+        from: ec2.Peer.ipv4(myIP),
+      },
+    ], ({port, description, from}) => {
+        securityGroup.addIngressRule(
+          from,
+          new ec2.Port({
+            fromPort: port,
+            toPort: port,
+            protocol: ec2.Protocol.TCP,
+            stringRepresentation: description
+          })
+        );
+      });
 
     console.log({ machineName });
     const instance = new ec2.Instance(this, "Instance", {

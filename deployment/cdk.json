@@ -43,6 +43,7 @@
     "machineName": "docker-host-fb594e7f-1684452287",
     "instanceType": "t4g.small",
     "route53Zone": "kieranbamforth.me",
-    "route53Record": "*.docker-host.kieranbamforth.me."
+    "route53Record": "*.docker-host.kieranbamforth.me.",
+    "myIP": "89.242.15.244/32"
   }
 }

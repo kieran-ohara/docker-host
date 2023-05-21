@@ -10,4 +10,7 @@ vm/ansible/collections: vm/ansible/requirements.yml vm/venv
 	vm/venv/bin/ansible-galaxy collection install -f --collections-path $@ -r $<
 	touch $@
 
-.PHONY: vm
+deployment:
+	cd $@ && npx cdk deploy DockerHostStack
+
+.PHONY: vm deployment

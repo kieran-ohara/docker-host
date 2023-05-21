@@ -1,0 +1,38 @@
+{
+  "ami:account=649526441784:filters.image-type.0=machine:filters.name.0=docker-host-fb594e7f-1684452287:filters.state.0=available:region=eu-west-2": "ami-0d251fa2643e78ac3",
+  "vpc-provider:account=649526441784:filter.isDefault=true:region=eu-west-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-0efb27bfe502c8105",
+    "vpcCidrBlock": "172.31.0.0/16",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-07d72cedb8ecf0602",
+            "cidr": "172.31.16.0/20",
+            "availabilityZone": "eu-west-2a",
+            "routeTableId": "rtb-0b35c4c66e2968d30"
+          },
+          {
+            "subnetId": "subnet-086db4824c2f477ba",
+            "cidr": "172.31.32.0/20",
+            "availabilityZone": "eu-west-2b",
+            "routeTableId": "rtb-0b35c4c66e2968d30"
+          },
+          {
+            "subnetId": "subnet-00eb54910cfcacd2a",
+            "cidr": "172.31.0.0/20",
+            "availabilityZone": "eu-west-2c",
+            "routeTableId": "rtb-0b35c4c66e2968d30"
+          }
+        ]
+      }
+    ]
+  },
+  "hosted-zone:account=649526441784:domainName=kieranbamforth.me:region=eu-west-2": {
+    "Id": "/hostedzone/Z05254903FK5KN8WSKJZ6",
+    "Name": "kieranbamforth.me."
+  }
+}

@@ -56,6 +56,7 @@ export class DockerHostStack extends cdk.Stack {
         name: machineName,
       }),
       securityGroup,
+      keyName: "docker-host",
     });
 
     const elasticIp = new ec2.CfnEIP(this, "EIP", {

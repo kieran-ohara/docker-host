@@ -1,4 +1,13 @@
 ---
+- name: Adding existing user rocky to group docker
+  user:
+    name: rocky
+    groups: docker
+    append: true
+  become: true
+  tags:
+    - user
+
 - name: Grab Traefik Binary.
   ansible.builtin.unarchive:
     src: https://github.com/traefik/traefik/releases/download/v2.10.1/traefik_v2.10.1_linux_arm64.tar.gz
